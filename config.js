@@ -11,5 +11,5 @@
 //       Row Level Security policy 控制 — schema.sql 已包含 POC 用嘅 policy。
 // ═══════════════════════════════════════════════════════════════
 
-var CONFIG_SUPABASE_URL = 'https://YOUR-PROJECT-REF.supabase.co';
-var CONFIG_SUPABASE_ANON_KEY = 'YOUR-ANON-KEY';
+var CONFIG_SUPABASE_URL = 'https://mbeftbvpeqfmyxvbpmcy.supabase.co';
+var CONFIG_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1iZWZ0YnZwZXFmbXl4dmJwbWN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODcxMDMwNjksImV4cCI6MjEwMjY3OTA2OX0.B5oK2HjzSBFvOkuyUFWuqJ3Yoiy2ivR39L2yx0OUKEM';
