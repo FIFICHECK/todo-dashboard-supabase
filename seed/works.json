@@ -1,0 +1,334 @@
+[
+ {
+  "id": "recqq9KSg5lLjIwA7",
+  "name": "13 Landmarks Day",
+  "url": "https://docs.google.com/spreadsheets/d/1_k7qCvF-cyWLkPKAITRjj7gInFTC2AYiaLN_MbXgezs/edit?gid=1234685766#gid=1234685766",
+  "date_key": "2026-06-11",
+  "repeat": "month",
+  "urgent": "",
+  "url_overrides": {}
+ },
+ {
+  "id": "recu6Vqw3iZpBQ9KT",
+  "name": "13 Landmarks Free Flight",
+  "url": "https://docs.google.com/spreadsheets/d/1SwXyRCsvOBN5GA1siU7QzH81SArjPtsDZyTy4NTfVCU/edit?gid=1639728232#gid=1639728232",
+  "date_key": "2026-06-10",
+  "repeat": "week",
+  "urgent": "",
+  "url_overrides": {}
+ },
+ {
+  "id": "reczZoSBFZcZDpUoM",
+  "name": "Add on Promotion",
+  "url": "https://docs.google.com/spreadsheets/d/13fm5fo7ANLAKUEkZAT2v4jmGEkkZACrITC44qpz4knA/edit?gid=2013267641#gid=2013267641",
+  "date_key": "2026-06-08",
+  "repeat": "week",
+  "urgent": "urgent",
+  "url_overrides": {}
+ },
+ {
+  "id": "recMPebhJrrY6BdWy",
+  "name": "BEST 100 (BEAUTY)",
+  "url": "https://docs.google.com/spreadsheets/d/1u2uUj804UOmEH6DT1A7YN31gJ5Zjl4NrrFN8yL_6WNY/edit?gid=877266494#gid=877266494",
+  "date_key": "2026-06-09",
+  "repeat": "week",
+  "urgent": "",
+  "url_overrides": {}
+ },
+ {
+  "id": "recFB_0",
+  "name": "Book Fair",
+  "url": "https://docs.google.com/spreadsheets/d/1lKd53MYwxzF2yf0G8KkycLZuLhaFcwrM/edit?gid=1885723030#gid=1885723030",
+  "date_key": "2026-06-15",
+  "repeat": "none",
+  "urgent": "urgent",
+  "url_overrides": {}
+ },
+ {
+  "id": "reclqosQEjbAMvlhX",
+  "name": "Extra Add On",
+  "url": "https://docs.google.com/spreadsheets/d/1u2uUj804UOmEH6DT1A7YN31gJ5Zjl4NrrFN8yL_6WNY/edit?gid=328354347#gid=328354347",
+  "date_key": "2026-06-08",
+  "repeat": "week",
+  "urgent": "",
+  "url_overrides": {}
+ },
+ {
+  "id": "rech03mIWJ5OHD67N",
+  "name": "FS (12pm截)",
+  "url": "https://docs.google.com/spreadsheets/d/1ds-U84hwTDbZ2n24O1CKWx7SUSuJbrWR8USrEzYC4dQ/edit#gid=812004904",
+  "date_key": "2026-06-11",
+  "repeat": "week",
+  "urgent": "",
+  "url_overrides": {}
+ },
+ {
+  "id": "recRV6w8GChRrc7iN",
+  "name": "Merchant contact list",
+  "url": "",
+  "date_key": "2026-06-08",
+  "repeat": "day",
+  "urgent": "",
+  "url_overrides": {}
+ },
+ {
+  "id": "recPEORJ3uGDf68AY",
+  "name": "New Merchant Update",
+  "url": "https://docs.google.com/spreadsheets/d/1u2uUj804UOmEH6DT1A7YN31gJ5Zjl4NrrFN8yL_6WNY/edit?gid=489395935#gid=489395935",
+  "date_key": "2026-06-12",
+  "repeat": "week",
+  "urgent": "",
+  "url_overrides": {}
+ },
+ {
+  "id": "recjyequUEgMhDKKY",
+  "name": "New Store Exposure",
+  "url": "https://docs.google.com/spreadsheets/d/1Go6tw0i2QQlfO2X70UYC9Nb-oR4UUEOg7ViKa9wsr_U/edit?gid=319953935#gid=319953935",
+  "date_key": "2026-06-08",
+  "repeat": "week",
+  "urgent": "",
+  "url_overrides": {}
+ },
+ {
+  "id": "recW2gyvvG8qMakhs",
+  "name": "New Store Update PPT",
+  "url": "https://docs.google.com/presentation/d/1N8_6hbnc8jNT30QN_zRUsxK1hG3f9a6boASEG8LOKdA/edit?slide=id.g3dd18ab936f_2_0#slide=id.g3dd18ab936f_2_0",
+  "date_key": "2026-06-10",
+  "repeat": "week",
+  "urgent": "",
+  "url_overrides": {}
+ },
+ {
+  "id": "recB0a1qen2SejpRu",
+  "name": "Newsfeed (All CAT)",
+  "url": "https://docs.google.com/spreadsheets/d/1dRDpnZKJy6oTR2DUFmMjjKe68pFLwcWqQYD_rFlVo6s/edit?gid=659735164#gid=659735164",
+  "date_key": "2026-06-08",
+  "repeat": "day",
+  "urgent": "serious",
+  "url_overrides": {}
+ },
+ {
+  "id": "recFB_1",
+  "name": "Online BB Fair",
+  "url": "https://docs.google.com/spreadsheets/d/1CrqTJLVRnS3UFlTVjzrsr3uM6nXTg9FAitDtIQ6Q6xI/edit?gid=366643250#gid=366643250",
+  "date_key": "2026-06-15",
+  "repeat": "none",
+  "urgent": "urgent",
+  "url_overrides": {}
+ },
+ {
+  "id": "recFB_2",
+  "name": "PCR 3 times Payment",
+  "url": "https://docs.google.com/spreadsheets/d/1aZhjlDPKoMhswZmzBOrg4AWO0FbU62iqL4Y8zKdaGtU/edit?gid=910496968#gid=910496968",
+  "date_key": "2026-06-09",
+  "repeat": "none",
+  "urgent": "",
+  "url_overrides": {}
+ },
+ {
+  "id": "recFB_3",
+  "name": "UI HW & PET Promotion (20/6 END)",
+  "url": "https://docs.google.com/spreadsheets/d/1NxdS_frBoKBlTpQ16dcSr1NKvntokzTFyoVFtRZtzZQ/edit?gid=0#gid=0",
+  "date_key": "2026-06-18",
+  "repeat": "none",
+  "urgent": "urgent",
+  "url_overrides": {}
+ },
+ {
+  "id": "recCFNyMYTu2Okrnn",
+  "name": "VIP (6pm截)",
+  "url": "https://docs.google.com/spreadsheets/u/0/d/1bQUJL2reT5GUZV82Yac6e4m-KzFCU-NG7QNhfmaKNek/edit",
+  "date_key": "2026-06-11",
+  "repeat": "week",
+  "urgent": "",
+  "url_overrides": {}
+ },
+ {
+  "id": "recUpG99vKzHr3bMc",
+  "name": "VIP Highlight (6pm 截)",
+  "url": "https://docs.google.com/spreadsheets/d/1bQUJL2reT5GUZV82Yac6e4m-KzFCU-NG7QNhfmaKNek/edit?pli=1#gid=630461716",
+  "date_key": "2026-06-08",
+  "repeat": "week",
+  "urgent": "",
+  "url_overrides": {}
+ },
+ {
+  "id": "recqZrFgRh7bJ51gv",
+  "name": "Weekly PDP poor comment",
+  "url": "https://docs.google.com/spreadsheets/d/1rVKzWJTfgDMtRs5d48S4_2dCEmafBHpgJm3XNZqsF54/edit?gid=957248892#gid=957248892",
+  "date_key": "2026-06-09",
+  "repeat": "week",
+  "urgent": "",
+  "url_overrides": {
+   "2026-06-29": "https://docs.google.com/spreadsheets/d/1ttWZWS4Bif9-SzuxBRMohB4Nf5B8F2zju4CvqPM3ej8/edit?gid=957248892#gid=957248892",
+   "2026-07-06": "https://docs.google.com/spreadsheets/d/1FJKC3HtjJoUvOvNmpJNSF0vpTARKEEBbK_BZCSXC9E4/edit?gid=957248892#gid=957248892",
+   "2026-07-13": "https://docs.google.com/spreadsheets/d/11qtt40Pi1wMgJGoE1o6iDH1d5MyitDs758edKBJIsHE/edit?gid=957248892#gid=957248892",
+   "2026-07-20": "https://docs.google.com/spreadsheets/d/1CWYazSpra7yvE72TJyDSZntK84pgr9qBqATx8Az4qgA/edit?gid=957248892#gid=957248892",
+   "2026-07-27": "https://docs.google.com/spreadsheets/d/1dVDGYgxOlTuk0e9_K5gLslccmRUkc63sYi1LrW8e9P0/edit?gid=957248892#gid=957248892",
+   "2026-08-03": "https://docs.google.com/spreadsheets/d/1jMWD0JhUHY-x3yjOFUtRAD-OYJN9I-5GVK5zeiC8g7A/edit?gid=957248892#gid=957248892",
+   "2026-08-10": "https://docs.google.com/spreadsheets/d/1X7VlIS221CdyTYuNlJmcREPnuXir-sWJhmqFVXrQeiI/edit?gid=957248892#gid=957248892"
+  }
+ },
+ {
+  "id": "rec6B9g3Mwx95UdPb",
+  "name": "Weekly update",
+  "url": "",
+  "date_key": "2026-06-12",
+  "repeat": "week",
+  "urgent": "",
+  "url_overrides": {}
+ },
+ {
+  "id": "recFB_4",
+  "name": "現代旅行之必要 Submission form",
+  "url": "https://docs.google.com/spreadsheets/d/1WVH8uzY7lKkktp_VHhVAnXpdbQrdGfzCDyCc3YuJAZo/edit?gid=0#gid=0",
+  "date_key": "2026-06-24",
+  "repeat": "none",
+  "urgent": "",
+  "url_overrides": {}
+ },
+ {
+  "id": "recFB_5",
+  "name": "PPP Confirm (Dead Line: 21 JUN)",
+  "url": "https://docs.google.com/spreadsheets/d/1bjjcybrNMRm51gpUuoiB_4rti4a88hYZ1xZ_PZuzT2A/edit?gid=2085203504#gid=2085203504",
+  "date_key": "2026-06-18",
+  "repeat": "none",
+  "urgent": "urgent",
+  "url_overrides": {}
+ },
+ {
+  "id": "recFB_6",
+  "name": "家電陪你開學🧑🏽‍💻 Submission form",
+  "url": "https://docs.google.com/spreadsheets/d/18LFqyGxpmIHLHbJcr5qrjAzw-Qn4_7F6fLlpoGoKxfg/edit?usp=sharing",
+  "date_key": "2026-06-24",
+  "repeat": "none",
+  "urgent": "",
+  "url_overrides": {}
+ },
+ {
+  "id": "rec0bbCJBZO3BGDmr",
+  "name": "(New Feeds) RM New SKU Sharing",
+  "url": "https://docs.google.com/presentation/d/1-629_ReydqkoPcNCIUQrJpfkxLCQb2fgCKsNE4TBXEA/edit?usp=sharing",
+  "date_key": "2026-06-18",
+  "repeat": "week",
+  "urgent": "urgent",
+  "url_overrides": {}
+ },
+ {
+  "id": "recFB_7",
+  "name": "PPP affected stores",
+  "url": "",
+  "date_key": "2026-06-23",
+  "repeat": "none",
+  "urgent": "urgent",
+  "url_overrides": {}
+ },
+ {
+  "id": "recFB_8",
+  "name": "3PL Tote out (SEP) confirm list",
+  "url": "https://docs.google.com/spreadsheets/d/15Q4qWwB3gJyEaLmxs2fBVS_kaxgawX9udAAwAQD28Vk/edit?gid=1390770091#gid=1390770091",
+  "date_key": "2026-06-25",
+  "repeat": "none",
+  "urgent": "serious",
+  "url_overrides": {}
+ },
+ {
+  "id": "recFB_9",
+  "name": "(AUG) PPP Promotion",
+  "url": "https://docs.google.com/spreadsheets/d/1hFbiuH-aUOYmNXcbOxU6TSW8TNqK_MowF6WjsFgbaJo/edit?pli=1&gid=334946758#gid=334946758",
+  "date_key": "2026-07-03",
+  "repeat": "none",
+  "urgent": "",
+  "url_overrides": {}
+ },
+ {
+  "id": "recFB_10",
+  "name": "HW Redemtion Reject List",
+  "url": "https://docs.google.com/spreadsheets/d/1fYK8ju9VpiPzDR3Lp0W4tq0gT5r_vIE57RRLDLjWu2w/edit?gid=0#gid=0",
+  "date_key": "2026-07-03",
+  "repeat": "none",
+  "urgent": "",
+  "url_overrides": {}
+ },
+ {
+  "id": "recVOnMfVdTcZZa5a",
+  "name": "AUG PPP AVG PRICE CONFIRM",
+  "url": "https://docs.google.com/spreadsheets/d/1-oGpY6ourDO81PPOOAaVM8FryP9x_acUhq2y42Cnz3Q/edit?gid=0#gid=0",
+  "date_key": "2026-07-20",
+  "repeat": "none",
+  "urgent": "urgent",
+  "url_overrides": {}
+ },
+ {
+  "id": "recLPxJmhWuVaVvAH",
+  "name": "口罩+測試劑 Campaign",
+  "url": "https://docs.google.com/spreadsheets/d/1FG5ycDXJtrMXdOtU7NJQ10JDvLqBvCJuNEvo98ZK6GQ/edit?gid=0#gid=0",
+  "date_key": "2026-07-16",
+  "repeat": "none",
+  "urgent": "",
+  "url_overrides": {}
+ },
+ {
+  "id": "recOZJ2hq8ZQo5ngK",
+  "name": "TVC <--> KA Highlight Offer (爆款)",
+  "url": "https://docs.google.com/spreadsheets/d/1MjuCy0CB0zyfuGOm75Ee9j8n6PuWA-co-bTcUBpx2uc/edit?gid=2137506943#gid=2137506943",
+  "date_key": "2026-07-15",
+  "repeat": "week",
+  "urgent": "serious",
+  "url_overrides": {}
+ },
+ {
+  "id": "recBlKcweIp2sl4P9",
+  "name": "PC Highlight (靚Offer 版)",
+  "url": "https://docs.google.com/spreadsheets/d/1lLOauLpCG1NyZ7OmtENriKOZ9BhFQ7xzFs2mQX8dK8g/edit?gid=1472730321#gid=1472730321",
+  "date_key": "2026-07-15",
+  "repeat": "week",
+  "urgent": "serious",
+  "url_overrides": {}
+ },
+ {
+  "id": "recESeODkoLLETzdj",
+  "name": "3 times payment",
+  "url": "https://docs.google.com/spreadsheets/d/1aZhjlDPKoMhswZmzBOrg4AWO0FbU62iqL4Y8zKdaGtU/edit?gid=490568711#gid=490568711",
+  "date_key": "2026-07-23",
+  "repeat": "month",
+  "urgent": "",
+  "url_overrides": {}
+ },
+ {
+  "id": "recIZnoGLlCy9ys27",
+  "name": "3P <> KA Email Confirm List",
+  "url": "https://docs.google.com/spreadsheets/d/1u2uUj804UOmEH6DT1A7YN31gJ5Zjl4NrrFN8yL_6WNY/edit?gid=1359979372#gid=1359979372",
+  "date_key": "2026-07-27",
+  "repeat": "none",
+  "urgent": "serious",
+  "url_overrides": {}
+ },
+ {
+  "id": "recbOvptneSg21emz",
+  "name": "EB Target Merchant MKT PLAN",
+  "url": "https://docs.google.com/spreadsheets/d/1lcLxuaX9l-QQ3vAnpbR1g4N5hOPXScBA1X3jz64nDl8/edit?gid=24127335#gid=24127335",
+  "date_key": "2026-07-30",
+  "repeat": "week",
+  "urgent": "urgent",
+  "url_overrides": {}
+ },
+ {
+  "id": "recXjenqP2xHSEsSM",
+  "name": "🏆 Top-100 熱賣 vs 官網價格比對",
+  "url": "https://official-price-top100.pages.dev/",
+  "date_key": "2026-07-27",
+  "repeat": "week",
+  "urgent": "urgent",
+  "url_overrides": {}
+ },
+ {
+  "id": "recF2zSMBjkbLT6Um",
+  "name": "3 times payment",
+  "url": "https://docs.google.com/spreadsheets/d/1aZhjlDPKoMhswZmzBOrg4AWO0FbU62iqL4Y8zKdaGtU/edit?gid=575449318#gid=575449318",
+  "date_key": "2026-08-20",
+  "repeat": "none",
+  "urgent": "urgent",
+  "url_overrides": {}
+ }
+]
