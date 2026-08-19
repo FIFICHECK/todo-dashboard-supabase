@@ -1337,6 +1337,7 @@
         document.getElementById('tableWrapper').style.display = 'block';
         initYearPicker();
         renderGrid();
+        startPolling();
         
         var range = getInitialDateRange(0, 4);
         var dateFilter = buildCheckKeyDateFilter(range.start, range.end);
