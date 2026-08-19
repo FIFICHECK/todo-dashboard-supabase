@@ -725,6 +725,7 @@
     var SUPABASE_URL = (typeof CONFIG_SUPABASE_URL !== 'undefined') ? CONFIG_SUPABASE_URL : '';
     var SUPABASE_ANON_KEY = (typeof CONFIG_SUPABASE_ANON_KEY !== 'undefined') ? CONFIG_SUPABASE_ANON_KEY : '';
     var supabaseClient = null;
+    var MAX_RMS = 7;
 
     // ===== Supabase data layer (replaces Airtable REST) =====
     var FIELD_MAP = {
