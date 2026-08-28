@@ -2708,7 +2708,13 @@
       btn.disabled = true;
       btn.textContent = '發送中...';
 
-      var DISCORD_WEBHOOK = 'https://discord.com/api/webhooks/1516150028006195360/REDACTED';
+      var DISCORD_WEBHOOK = null; // 🔒 2026-08-28 已停用：舊 webhook token 寫咗喺公開 code，被 spammer 攞嚟濫用，webhook 已刪除。提醒功能改用安全方案（見 Hermes agent）前暫停。
+      if (!DISCORD_WEBHOOK) {
+        showToast(false, '⚠️ 提醒功能已停用（webhook 被濫用已刪除）— 聯絡 Hermes 重新設定');
+        btn.disabled = false;
+        btn.textContent = '🔔 發送提醒';
+        return;
+      }
 
       // Get current week dates (Mon to Fri only for this logic)
       var weekDates = [];
