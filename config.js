@@ -1,15 +1,12 @@
 // ═══════════════════════════════════════════════════════════════
 // Todo Dashboard (Supabase 版) — 設定檔
 // ═══════════════════════════════════════════════════════════════
-// 1. 去 https://supabase.com/dashboard 開一個免費 project（2 分鐘）
-// 2. 開完之後: Project Settings → API → 複製:
-//    - Project URL  (例如 https://abcd1234.supabase.co)
-//    - anon public key (eyJhbGciOi... 長長一串)
-// 3. 貼落下面兩個變數，存檔即可
-//
-// 注意: anon key 係公開嘅（放喺前端），安全性靠 database
-//       Row Level Security policy 控制 — schema.sql 已包含 POC 用嘅 policy。
+// 安全架構（2026-08-18 起）：
+//   browser → fificheck-access-gate worker（session cookie + allowlist 檢查）
+//              ↓ worker 用 service role key（secret，永不出而家 public repo）
+//            Supabase（anon 權限已 revoke — RLS deny all）
+// 呢個檔案唔再需要任何 key — public repo 零敏感資料。
 // ═══════════════════════════════════════════════════════════════
 
-var CONFIG_SUPABASE_URL = 'https://mbeftbvpeqfmyxvbpmcy.supabase.co';
-var CONFIG_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1iZWZ0YnZwZXFmbXl4dmJwbWN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODcxMDMwNjksImV4cCI6MjEwMjY3OTA2OX0.B5oK2HjzSBFvOkuyUFWuqJ3Yoiy2ivR39L2yx0OUKEM';
+var CONFIG_SB_WORKER = 'https://fificheck-access-gate.fificheck.workers.dev';
+var CONFIG_SB_SITE = 'todo-supabase';

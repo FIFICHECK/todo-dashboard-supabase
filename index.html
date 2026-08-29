@@ -605,19 +605,18 @@
 
   <!-- Offline / API quota banner -->
   <div id="offlineBanner" style="display:none;background:#5c2e00;border:1px solid #ff9800;color:#ffb74d;text-align:center;padding:8px 12px;margin-bottom:10px;border-radius:8px;font-size:0.85rem;font-weight:600;">
-    ⚠️ 離線模式 — Airtable API 每月額度已用盡，顯示最後已知嘅工作清單（唯讀）。Check 狀態可能未完整，API 恢復後會自動同步。
+    ⚠️ 離線模式 — 數據暫時載入唔到（可能未登入／網絡問題），顯示最後已知嘅工作清單（唯讀）。
   </div>
   
-  <!-- Setup Screen -->
-  <div id="setupOverlay" style="position:fixed;top:0;left:0;right:0;bottom:0;background:#0d0d1a;z-index:1000;display:none;align-items:center;justify-content:center;">
-  <div id="setupScreen" class="setup-container">
-    <h2>🔗 連接 Airtable</h2>
-    <p>按「連接 Airtable」即可開始使用</p>
-    <input type="text" id="setupApiKey" placeholder="API Key (pat...)">
-    <input type="text" id="setupBaseId" placeholder="Base ID (app...)" value="appQrncWYHHMh1iXf">
-    <p style="font-size:0.8rem;color:#666;">設定會儲存喺你瀏覽器嘅 localStorage</p>
-    <button onclick="saveSetup()">連接 Airtable</button>
-  </div>
+  <!-- Access Gate (allowlist email login → fg_sess cookie via fificheck-access-gate worker) -->
+  <div id="accessGate" style="position:fixed;top:0;left:0;right:0;bottom:0;background:#0d0d1a;z-index:1000;display:none;align-items:center;justify-content:center;">
+    <div class="setup-container">
+      <h2>🔐 登入 To-Do List</h2>
+      <p>請輸入你嘅公司 email（需喺團隊 allowlist 內）</p>
+      <input type="email" id="gateEmail" placeholder="email@company.com" style="width:100%;padding:10px;margin:10px 0;border-radius:6px;border:1px solid #4fc3f7;background:#1a1a2e;color:#fff;font-size:1rem;">
+      <button onclick="gateLogin()">登入</button>
+      <p id="gateMsg" style="font-size:0.85rem;color:#f39c12;margin-top:10px;"></p>
+    </div>
   </div>
 
   <div id="loading" class="loading" style="display:none;">⏳ 載入數據中...</div>
@@ -720,12 +719,83 @@
   </div>
 
   <script src="config.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- supabase-js CDN removed: data layer now goes through fificheck-access-gate worker (/sb) -->
   <script>
-    var SUPABASE_URL = (typeof CONFIG_SUPABASE_URL !== 'undefined') ? CONFIG_SUPABASE_URL : '';
-    var SUPABASE_ANON_KEY = (typeof CONFIG_SUPABASE_ANON_KEY !== 'undefined') ? CONFIG_SUPABASE_ANON_KEY : '';
-    var supabaseClient = null;
+    // ===== Supabase data layer via access-gate worker (NO anon key in public code) =====
+    // browser → fificheck-access-gate /sb (session cookie) → service role key → Supabase
+    var SB_WORKER = (typeof CONFIG_SB_WORKER !== 'undefined') ? CONFIG_SB_WORKER : 'https://fificheck-access-gate.fificheck.workers.dev';
+    var SB_SITE = (typeof CONFIG_SB_SITE !== 'undefined') ? CONFIG_SB_SITE : 'todo-supabase';
     var MAX_RMS = 7;
+
+    // Chainable query builder mimicking the supabase-js subset used by this app.
+    // `await builder` executes via .then() → POST/GET to worker /sb → {data, error, count}
+    function sbQuery(table) {
+      var params = [];
+      var body = null;
+      var prefer = null;
+      var countExact = false;
+      var method = 'GET';
+      var api = {
+        select: function(cols, opts) {
+          params.push(['select', cols || '*']);
+          if (opts && opts.count === 'exact') countExact = true;
+          return api;
+        },
+        eq: function(col, val) { params.push([col, 'eq.' + val]); return api; },
+        lt: function(col, val) { params.push([col, 'lt.' + val]); return api; },
+        like: function(col, val) { params.push([col, 'like.' + val]); return api; },
+        or: function(s) { params.push(['or', '(' + s + ')']); return api; },
+        range: function(a, b) { params.push(['offset', String(a)]); params.push(['limit', String(b - a + 1)]); return api; },
+        insert: function(rows) { method = 'POST'; body = rows; prefer = 'return=representation'; return api; },
+        update: function(payload) { method = 'PATCH'; body = payload; prefer = 'return=representation'; return api; },
+        upsert: function(rows, opts) {
+          method = 'POST';
+          body = rows;
+          if (opts && opts.onConflict) params.push(['on_conflict', opts.onConflict]);
+          prefer = 'resolution=merge-duplicates,return=representation';
+          return api;
+        },
+        delete: function() { method = 'DELETE'; return api; },
+        then: function(resolve, reject) {
+          sbExecute(table, params, method, body, prefer, countExact).then(resolve, reject);
+        }
+      };
+      return api;
+    }
+
+    async function sbExecute(table, params, method, body, prefer, countExact) {
+      try {
+        var url = SB_WORKER + '/sb?site=' + encodeURIComponent(SB_SITE) +
+                  '&table=' + encodeURIComponent(table) +
+                  '&q=' + encodeURIComponent(JSON.stringify(params));
+        if (prefer) url += '&prefer=' + encodeURIComponent(prefer);
+        if (countExact) url += '&count=1';
+        var opts = { credentials: 'include' };
+        if (method !== 'GET') {
+          url += '&m=' + method;
+          opts.method = 'POST';
+          opts.headers = { 'Content-Type': 'text/plain' };
+          opts.body = (body !== null && body !== undefined) ? JSON.stringify(body) : '';
+        }
+        var r = await fetch(url, opts);
+        var j = null;
+        try { j = await r.json(); } catch (e) { j = null; }
+        if (r.status === 401) {
+          showGate();
+          return { data: null, error: { code: '401', message: 'unauthorized - please login' } };
+        }
+        if (!j) return { data: null, error: { code: String(r.status), message: 'bad response from gate' } };
+        return { data: j.data, error: j.error, count: j.count };
+      } catch (e) {
+        showGate();
+        return { data: null, error: { code: 'NET', message: (e && e.message) || String(e) } };
+      }
+    }
+
+    // supabaseClient kept as the single entry point — all 15 call sites unchanged
+    var supabaseClient = {
+      from: function(table) { return sbQuery(table); }
+    };
 
     // ===== Supabase data layer (replaces Airtable REST) =====
     var FIELD_MAP = {
@@ -767,18 +837,7 @@
       return 'rec_' + Date.now() + '_' + Math.random().toString(36).slice(2, 10);
     }
     function initSupabaseClient() {
-      if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-        console.error('SUPABASE: Missing CONFIG_SUPABASE_URL / CONFIG_SUPABASE_ANON_KEY in config.js');
-        return false;
-      }
-      if (typeof supabase === 'undefined') {
-        console.error('SUPABASE: supabase-js library not loaded (check CDN script tag)');
-        return false;
-      }
-      if (!supabaseClient) {
-        supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-        console.log('SUPABASE: Client initialized');
-      }
+      // Data layer now goes through the access-gate worker (no anon key / no supabase-js needed)
       return true;
     }
     var RM_COLORS = ['#4fc3f7', '#f39c12', '#9b59b6', '#3498db', '#1abc9c', '#e74c3c', '#2ecc71'];
@@ -2635,14 +2694,69 @@
       }
       
       if (initSupabaseClient()) {
-        document.getElementById('setupScreen').style.display = 'none';
-        document.getElementById('setupOverlay').style.display = 'none';
         document.getElementById('loading').style.display = 'block';
-        loadData();
+        // Access gate: 有 session cookie 就直接 load；冇就等 email 登入
+        checkSession();
       } else {
         document.getElementById('loading').style.display = 'none';
-        showToast(false, '❌ 缺少 Supabase 設定 — 請檢查 config.js');
+        showToast(false, '❌ 初始化失敗');
       }
+    }
+
+    // ── Access gate helpers ──
+    function showGate(msg) {
+      var g = document.getElementById('accessGate');
+      if (g) g.style.display = 'flex';
+      if (msg) {
+        var m = document.getElementById('gateMsg');
+        if (m) m.textContent = msg;
+      }
+      document.getElementById('loading').style.display = 'none';
+    }
+    function hideGate() {
+      var g = document.getElementById('accessGate');
+      if (g) g.style.display = 'none';
+    }
+    function checkSession() {
+      // Probe /sb with a tiny read — 401 = no session → gate
+      var probe = sbExecute('settings', [['select', 'id'], ['limit', '1']], 'GET', null, null, false);
+      probe.then(function(res) {
+        if (res && res.error && res.error.code === '401') { showGate(); return; }
+        if (res && res.error) { showGate('⚠️ ' + (res.error.message || '連接失敗')); return; }
+        hideGate();
+        document.getElementById('loading').style.display = 'block';
+        loadData();
+      });
+    }
+    function gateLogin() {
+      var emailInput = document.getElementById('gateEmail');
+      var email = (emailInput && emailInput.value || '').trim().toLowerCase();
+      var msg = document.getElementById('gateMsg');
+      if (!email || email.indexOf('@') === -1) {
+        if (msg) msg.textContent = '請輸入有效 email';
+        return;
+      }
+      if (msg) msg.textContent = '⏳ 驗證中...';
+      fetch(SB_WORKER + '/session', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify({ site: SB_SITE, email: email })
+      }).then(function(r) {
+        if (r.status === 403) {
+          if (msg) msg.textContent = '❌ 呢個 email 唔喺 allowlist 內 — 請搵管理員加';
+          return;
+        }
+        if (!r.ok) {
+          if (msg) msg.textContent = '❌ 登入失敗 (' + r.status + ') — 請再試';
+          return;
+        }
+        hideGate();
+        document.getElementById('loading').style.display = 'block';
+        loadData();
+      }).catch(function() {
+        if (msg) msg.textContent = '❌ 網絡錯誤，請再試';
+      });
     }
 
 
