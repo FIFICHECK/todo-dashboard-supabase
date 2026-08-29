@@ -771,10 +771,14 @@
         if (prefer) url += '&prefer=' + encodeURIComponent(prefer);
         if (countExact) url += '&count=1';
         var opts = { credentials: 'include' };
+        var sbTok = null;
+        try { sbTok = localStorage.getItem('sb_token'); } catch (e) { sbTok = null; }
+        if (sbTok) opts.headers = { 'X-SB-Token': sbTok };
         if (method !== 'GET') {
           url += '&m=' + method;
           opts.method = 'POST';
-          opts.headers = { 'Content-Type': 'text/plain' };
+          opts.headers = opts.headers || {};
+          opts.headers['Content-Type'] = 'text/plain';
           opts.body = (body !== null && body !== undefined) ? JSON.stringify(body) : '';
         }
         var r = await fetch(url, opts);
@@ -2728,7 +2732,7 @@
         loadData();
       });
     }
-    function gateLogin() {
+    async function gateLogin() {
       var emailInput = document.getElementById('gateEmail');
       var email = (emailInput && emailInput.value || '').trim().toLowerCase();
       var msg = document.getElementById('gateMsg');
@@ -2742,7 +2746,7 @@
         credentials: 'include',
         headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify({ site: SB_SITE, email: email })
-      }).then(function(r) {
+      }).then(async function(r) {
         if (r.status === 403) {
           if (msg) msg.textContent = '❌ 呢個 email 唔喺 allowlist 內 — 請搵管理員加';
           return;
@@ -2750,6 +2754,11 @@
         if (!r.ok) {
           if (msg) msg.textContent = '❌ 登入失敗 (' + r.status + ') — 請再試';
           return;
+        }
+        var j = null;
+        try { j = await r.json(); } catch (e) { j = null; }
+        if (j && j.token) {
+          try { localStorage.setItem('sb_token', j.token); } catch (e) {}
         }
         hideGate();
         document.getElementById('loading').style.display = 'block';
