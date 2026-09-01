@@ -2399,8 +2399,8 @@
     
     // Poll for updates every 30 seconds (Supabase: unlimited API requests, no quota concern)
     var syncInterval = null;
-    var countdownValue = 30;
-    var SYNC_INTERVAL_SECONDS = 30;
+    var countdownValue = 10;
+    var SYNC_INTERVAL_SECONDS = 10;
     function updateCountdown() {
       var el = document.getElementById('refreshCountdown');
       if (el) el.textContent = countdownValue;
